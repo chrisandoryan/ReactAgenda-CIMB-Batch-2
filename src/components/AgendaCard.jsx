@@ -14,6 +14,10 @@ class AgendaCard extends React.Component {
         this.props.funcDeleteAgenda(this.props.id);
     }
 
+    handleAgendaUpdate = () => {
+        this.props.funcUpdateAgenda();
+    }
+
     // Tips formatting: CTRL + A, CTRL + K + F
     render() {
         return (
@@ -23,7 +27,7 @@ class AgendaCard extends React.Component {
                 <p>{this.props.date} | {this.props.time}</p>
                 <p>{this.props.desc}</p>
                 <Button onClick={this.handleAgendaDelete} variant="danger">Delete</Button>
-                <Button variant="secondary">Update</Button>
+                <Button onClick={this.handleAgendaUpdate} variant="secondary">Update</Button>
             </div>
         );
     }

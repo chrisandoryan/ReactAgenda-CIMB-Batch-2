@@ -28,20 +28,34 @@ class AgendaClass extends React.Component {
     }
 
     deleteAgenda = (id) => {
-        this.setState((state, props) => {
+        this.setState((state, _) => {
             // kalo mau delete array state, copy dulu state ke variable baru
             let newAgendas = [...state.agendas];
             newAgendas.splice(id, 1);
             return {
                 agendas: newAgendas,
-                currentBalance: props.currentBalance
+                // currentBalance: props.currentBalance
             }
         });
     }
 
     addAgenda = (agenda) => {
-        alert("Adding agenda...");
+        // alert("Adding agenda...");
+        // Cara 1
+        // let newAgendas = [...this.state.agendas, agenda];
+        // this.setState({
+        //     agendas: newAgendas
+        // });
+
         console.log(agenda);
+
+        // Cara 2 - lebih reliable
+        this.setState((state, _) => {
+            let newAgendas = [...state.agendas, agenda];
+            return {
+                agendas: newAgendas
+            }
+        })
     }
 
     componentDidMount() {

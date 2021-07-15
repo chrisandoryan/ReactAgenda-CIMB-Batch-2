@@ -21,6 +21,10 @@ class Home extends React.Component {
                 <Link to="/agenda/class">
                     Agenda (Class)
                 </Link>
+                <br />
+                <Link to="/agenda/function">
+                    Agenda (Function)
+                </Link>
             </div>
         )
     }

@@ -1,5 +1,9 @@
 import { Button, Form } from "react-bootstrap";
 import React from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 class AgendaAddForm extends React.Component {
     constructor(props) {
@@ -7,22 +11,30 @@ class AgendaAddForm extends React.Component {
         this.state = {
             agendaTitle: "",
             agendaDesc: "",
-            agendaDate: ""
+            agendaDate: "",
+            agendaTime: "",
+            datePickerDate: ""
         }
     }
 
     handleAddAgenda = (e) => {
-        e.preventDefault();
+        e.preventDefault(); // mencegah form dikirim menggunakan http
+
         // validasi...
         if (this.state.agendaTitle == "") {
             alert("Title cannot be empty!");
             return;
         }
+        if (this.state.agendaDesc == "") {
+            alert("Desc cannot be empty!");
+            return;
+        }
         // reformat... ex: 2021-07-15 => 15 July 2021
         let agenda = {
             agendaTitle: this.state.agendaTitle,
-            agedaDesc: this.state.agendaDesc,
-            agendaDate: this.state.agendaDate 
+            agendaDesc: this.state.agendaDesc,
+            agendaDate: this.state.agendaDate,
+            agendaTime: this.state.agendaTime
         }
         this.props.funcAddAgenda(agenda);
     }
@@ -42,11 +54,18 @@ class AgendaAddForm extends React.Component {
         });
     }
 
-    handleAgendaDateInput = (e) => {
-        let date = e.target.value;
+    handleAgendaDateInput = (dateString) => {
+        let dateMoment = moment(dateString);
+        
+        let agendaDate = dateMoment.format("DD MMMM YYYY")
+        let agendaTime = dateMoment.format("HH:mm")
+
         this.setState({
-            agendaDate: date
-        });
+            agendaDate: agendaDate,
+            agendaTime: agendaTime,
+            datePickerDate: dateString
+        })
+        
     }
 
     render() {
@@ -70,9 +89,12 @@ class AgendaAddForm extends React.Component {
 
                 <Form.Group className="mb-3" controlId="formAgendaDate">
                     <Form.Label>Agenda Date</Form.Label>
-                    <Form.Control 
-                        type="date"
-                        onInput={this.handleAgendaDateInput} />
+                    <DatePicker
+                        dateFormat="dd MMMM yyyy HH:mm"
+                        selected={this.state.datePickerDate}
+                        showTimeSelect
+                        onChange={this.handleAgendaDateInput}
+                    />
                 </Form.Group>
 
                 <Button

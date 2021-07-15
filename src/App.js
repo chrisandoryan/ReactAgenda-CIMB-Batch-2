@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
+import AgendaFunction from './pages/AgendaFunction';
 
 class Routing extends React.Component {
   render() {
@@ -25,7 +26,7 @@ class Routing extends React.Component {
             <AgendaClass />
           </Route>
           <Route path="/agenda/function">
-            <h1>ToDo: AgendaFunctionComponent</h1>
+            <AgendaFunction />
           </Route>
         </Switch>
       </Router>
