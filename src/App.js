@@ -2,8 +2,36 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import AgendaClass from './pages/AgendaClass';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './pages/Home';
+
+class Routing extends React.Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/">
+            <Home />
+          </Route>
+          <Route path="/landing">
+            <AppFunction />
+          </Route>
+          <Route path="/404">
+            <h1>404 Not Found</h1>
+          </Route>
+          <Route path="/agenda/class">
+            <AgendaClass />
+          </Route>
+          <Route path="/agenda/function">
+            <h1>ToDo: AgendaFunctionComponent</h1>
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +62,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AgendaClass></AgendaClass>
+        <Routing />
       </div>
     )
   }
