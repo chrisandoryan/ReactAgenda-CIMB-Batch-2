@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import AgendaAddForm from '../components/AgendaAddForm';
 import AgendaCard from '../components/AgendaCard';
 import Header from '../components/Header';
 
@@ -26,11 +27,21 @@ class AgendaClass extends React.Component {
         // this.deleteAgenda = this.deleteAgenda.bind(this);
     }
 
-    deleteAgenda = () => {
-        console.log("Deleting agenda...");
-        this.setState({
-            agendaCollection: "Ryan's Agenda Collection"
+    deleteAgenda = (id) => {
+        this.setState((state, props) => {
+            // kalo mau delete array state, copy dulu state ke variable baru
+            let newAgendas = [...state.agendas];
+            newAgendas.splice(id, 1);
+            return {
+                agendas: newAgendas,
+                currentBalance: props.currentBalance
+            }
         });
+    }
+
+    addAgenda = (agenda) => {
+        alert("Adding agenda...");
+        console.log(agenda);
     }
 
     componentDidMount() {
@@ -57,32 +68,16 @@ class AgendaClass extends React.Component {
                 <Header />
                 <div id="addAgendaForm">
                     <h2>Add New Agenda</h2>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="formAgendaTitle">
-                            <Form.Label>Agenda Title</Form.Label>
-                            <Form.Control type="text" placeholder="What do you want to do?" />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formAgendaDesc">
-                            <Form.Label>Agenda Description</Form.Label>
-                            <Form.Control as="textarea" placeholder="Agenda Description" />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formAgendaDate">
-                            <Form.Label>Agenda Date</Form.Label>
-                            <Form.Control type="date" />
-                        </Form.Group>
-
-                        <Button variant="primary" type="submit">
-                            Add Agenda
-                        </Button>
-                    </Form>
+                    <AgendaAddForm 
+                        funcAddAgenda={this.addAgenda}
+                    />
                 </div>
                 <div id="showAgenda">
                     <h2>{this.state.agendaCollection}</h2>
                     {
-                        this.state.agendas.map((agenda) => (
+                        this.state.agendas.map((agenda, index) => (
                             <AgendaCard
+                                id={index}
                                 title={agenda.agendaTitle}
                                 date={agenda.agendaDate}
                                 time={agenda.agendaTime}

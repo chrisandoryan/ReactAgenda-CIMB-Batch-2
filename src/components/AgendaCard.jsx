@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 class AgendaCard extends React.Component {
     constructor(props) {
@@ -6,7 +7,11 @@ class AgendaCard extends React.Component {
     }
 
     componentDidMount() {
-        this.props.funcDeleteAgenda();
+        
+    }
+
+    handleAgendaDelete = () => {
+        this.props.funcDeleteAgenda(this.props.id);
     }
 
     // Tips formatting: CTRL + A, CTRL + K + F
@@ -17,6 +22,8 @@ class AgendaCard extends React.Component {
                 <h3>{this.props.title || "No Data"}</h3>
                 <p>{this.props.date} | {this.props.time}</p>
                 <p>{this.props.desc}</p>
+                <Button onClick={this.handleAgendaDelete} variant="danger">Delete</Button>
+                <Button variant="secondary">Update</Button>
             </div>
         );
     }
