@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
+import styled from "styled-components";
 import AgendaAddForm from "../components/AgendaAddForm";
 import AgendaCard from "../components/AgendaCard";
 import Header from "../components/Header";
 
 import styles from "./styles/agendaPage.module.css";
+
+const SectionDiv = styled.div`
+    margin-top: 1.5rem;
+`
 
 function AgendaFunction(props) {
     const [agendas, setAgendas] = useState([
@@ -64,13 +69,13 @@ function AgendaFunction(props) {
     return (
         <div>
             <Header />
-            <div id="addAgendaForm">
+            <SectionDiv>
                 <h2>Add New Agenda</h2>
                 <AgendaAddForm 
                     funcAddAgenda={addAgenda}
                 />
-            </div>
-            <div id="showAgenda">
+            </SectionDiv>
+            <SectionDiv>
                 <h2>{ agendaCollection }</h2>
                 <div id={styles.agendaCardContainer}>
                     {
@@ -87,8 +92,7 @@ function AgendaFunction(props) {
                         ))
                     }
                 </div>
-                
-            </div>
+            </SectionDiv>
             <div id="editAgendaModal">
                 <Modal show={modalShow} onHide={handleClose}>
                     <Modal.Header>

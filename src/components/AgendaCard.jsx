@@ -1,7 +1,22 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
+import styled from 'styled-components';
 
 import styles from './styles/agendaCard.module.css';
+
+const FormButton = styled.button`
+    background: ${props => props.mode == "delete" ? "red" : "blue"};
+    color: white;
+    margin-right: 10px;
+`
+
+const FormButtonBootstrap = styled(Button)`
+    background: ${props => props.mode == "delete" ? "red" : "blue"};
+    color: white;
+    margin-right: 10px;
+`
+
+
 class AgendaCard extends React.Component {
     constructor(props) {
         super(props);
@@ -30,8 +45,9 @@ class AgendaCard extends React.Component {
                             <p>{this.props.date} | {this.props.time}</p>
                             <p>{this.props.desc}</p>
                         </Card.Text>
-                        <Button onClick={this.handleAgendaDelete} variant="danger">Delete</Button>
-                        <Button onClick={this.handleAgendaUpdate} variant="secondary">Update</Button>
+                        <FormButtonBootstrap mode="delete" onClick={this.handleAgendaDelete} variant="danger">Delete</FormButtonBootstrap>
+
+                        <FormButtonBootstrap onClick={this.handleAgendaUpdate} variant="secondary">Update</FormButtonBootstrap>
                     </Card.Body>
                 </Card>
             </div>
