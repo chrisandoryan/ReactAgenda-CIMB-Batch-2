@@ -92,3 +92,4 @@ function AppFunction() {
 }
 
 export default App;
+export { AppFunction };

@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/agenda-form.css";
 
-import moment from "moment";
+import { convertToDate, convertToTime } from "../utils/dateHelper";
 
 class AgendaAddForm extends React.Component {
     constructor(props) {
@@ -56,11 +56,9 @@ class AgendaAddForm extends React.Component {
         });
     }
 
-    handleAgendaDateInput = (dateString) => {
-        let dateMoment = moment(dateString);
-        
-        let agendaDate = dateMoment.format("DD MMMM YYYY")
-        let agendaTime = dateMoment.format("HH:mm")
+    handleAgendaDateInput = (dateString) => {        
+        let agendaDate = convertToDate(dateString);
+        let agendaTime = convertToTime(dateString);
 
         this.setState({
             agendaDate: agendaDate,

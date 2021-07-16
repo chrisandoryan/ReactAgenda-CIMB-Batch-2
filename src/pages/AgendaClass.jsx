@@ -91,6 +91,7 @@ class AgendaClass extends React.Component {
                     {
                         this.state.agendas.map((agenda, index) => (
                             <AgendaCard
+                                key={index}
                                 id={index}
                                 title={agenda.agendaTitle}
                                 date={agenda.agendaDate}

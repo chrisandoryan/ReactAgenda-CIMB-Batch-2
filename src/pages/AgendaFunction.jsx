@@ -82,6 +82,7 @@ function AgendaFunction(props) {
                         agendas.map((agenda, index) => (
                             <AgendaCard 
                                 id={index}
+                                key={index}
                                 title={agenda.agendaTitle}
                                 date={agenda.agendaDate}
                                 time={agenda.agendaTime}
