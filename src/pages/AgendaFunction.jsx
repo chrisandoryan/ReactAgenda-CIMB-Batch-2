@@ -4,6 +4,8 @@ import AgendaAddForm from "../components/AgendaAddForm";
 import AgendaCard from "../components/AgendaCard";
 import Header from "../components/Header";
 
+import "./pageAgenda.css";
+
 function AgendaFunction(props) {
     const [agendas, setAgendas] = useState([
         {
@@ -58,21 +60,22 @@ function AgendaFunction(props) {
         }
         console.log("Agendas is changed.");
     }, [agendas, agendaCollection]);
-    
+
     return (
         <div>
             <Header />
             <div id="addAgendaForm">
                 <h2>Add New Agenda</h2>
-                <AgendaAddForm 
+                <AgendaAddForm
                     funcAddAgenda={addAgenda}
                 />
             </div>
+            <h2>{agendaCollection}</h2>
             <div id="showAgenda">
-                <h2>{ agendaCollection }</h2>
                 {
                     agendas.map((agenda, index) => (
-                        <AgendaCard 
+                        <div id="agendaCardContainer">
+                        <AgendaCard
                             id={index}
                             title={agenda.agendaTitle}
                             date={agenda.agendaDate}
@@ -81,6 +84,7 @@ function AgendaFunction(props) {
                             funcDeleteAgenda={deleteAgenda}
                             funcUpdateAgenda={updateAgenda}
                         />
+                        </div>
                     ))
                 }
             </div>
@@ -90,7 +94,7 @@ function AgendaFunction(props) {
                         <Modal.Title>Edit Agenda</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        TODO: Put Agenda Edit Form    
+                        TODO: Put Agenda Edit Form
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>

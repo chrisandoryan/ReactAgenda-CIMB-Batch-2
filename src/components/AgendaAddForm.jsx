@@ -88,13 +88,19 @@ class AgendaAddForm extends React.Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formAgendaDate">
-                    <Form.Label>Agenda Date</Form.Label>
-                    <DatePicker
-                        dateFormat="dd MMMM yyyy HH:mm"
-                        selected={this.state.datePickerDate}
-                        showTimeSelect
-                        onChange={this.handleAgendaDateInput}
-                    />
+                    <div>
+                        <Form.Label>Agenda Date</Form.Label>
+                    </div>
+                    <div style={{width: "100%"}}>
+                        <DatePicker
+                            wrapperClassName="customDatePickerContainer"
+                            id="datePickerInput"
+                            dateFormat="dd MMMM yyyy HH:mm"
+                            selected={this.state.datePickerDate}
+                            showTimeSelect
+                            onChange={this.handleAgendaDateInput}
+                        />
+                    </div>
                 </Form.Group>
 
                 <Button

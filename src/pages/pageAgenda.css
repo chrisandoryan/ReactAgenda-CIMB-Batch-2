@@ -1,0 +1,31 @@
+#addAgendaForm {
+    margin: 20px 10px 40px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#addAgendaForm form {
+    width: 50%;
+}
+
+#showAgenda {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#showAgenda #agendaCard {
+    padding: 15px;
+}
+
+#showAgenda #agendaCardContainer {
+    padding: 10px;
+}
+
+.customDatePickerContainer {
+    width: 100%;
+}
+
+.customDatePickerContainer #datePickerInput {
+    width: 100%;
+}

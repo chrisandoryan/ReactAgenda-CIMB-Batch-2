@@ -1,4 +1,12 @@
 import React from "react";
+import styles from './header.module.css';
+import styled from 'styled-components';
+
+const Greeting = styled.p`
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 0;
+`
 
 class Header extends React.Component {
     constructor(props) {
@@ -11,12 +19,12 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id={styles.header}>
                 <div>
                     <h1>ReactAgenda.io</h1>
                 </div>
-                <div style={{textAlign: "left"}}>
-                    <h2>Welcome, Guest!</h2>
+                <div id={styles.loginStatus}>
+                    <Greeting>Welcome, Guest!</Greeting>
                     <a href="">Already have an account? Login here.</a>
                 </div>
             </div>
