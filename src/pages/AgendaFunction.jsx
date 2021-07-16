@@ -4,6 +4,8 @@ import AgendaAddForm from "../components/AgendaAddForm";
 import AgendaCard from "../components/AgendaCard";
 import Header from "../components/Header";
 
+import styles from "./styles/agendaPage.module.css";
+
 function AgendaFunction(props) {
     const [agendas, setAgendas] = useState([
         {
@@ -70,19 +72,22 @@ function AgendaFunction(props) {
             </div>
             <div id="showAgenda">
                 <h2>{ agendaCollection }</h2>
-                {
-                    agendas.map((agenda, index) => (
-                        <AgendaCard 
-                            id={index}
-                            title={agenda.agendaTitle}
-                            date={agenda.agendaDate}
-                            time={agenda.agendaTime}
-                            desc={agenda.agendaDesc}
-                            funcDeleteAgenda={deleteAgenda}
-                            funcUpdateAgenda={updateAgenda}
-                        />
-                    ))
-                }
+                <div id={styles.agendaCardContainer}>
+                    {
+                        agendas.map((agenda, index) => (
+                            <AgendaCard 
+                                id={index}
+                                title={agenda.agendaTitle}
+                                date={agenda.agendaDate}
+                                time={agenda.agendaTime}
+                                desc={agenda.agendaDesc}
+                                funcDeleteAgenda={deleteAgenda}
+                                funcUpdateAgenda={updateAgenda}
+                            />
+                        ))
+                    }
+                </div>
+                
             </div>
             <div id="editAgendaModal">
                 <Modal show={modalShow} onHide={handleClose}>

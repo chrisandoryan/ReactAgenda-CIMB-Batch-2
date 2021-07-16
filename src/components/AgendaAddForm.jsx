@@ -3,6 +3,8 @@ import React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles/agenda-form.css";
+
 import moment from "moment";
 
 class AgendaAddForm extends React.Component {
@@ -88,13 +90,17 @@ class AgendaAddForm extends React.Component {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formAgendaDate">
-                    <Form.Label>Agenda Date</Form.Label>
-                    <DatePicker
-                        dateFormat="dd MMMM yyyy HH:mm"
-                        selected={this.state.datePickerDate}
-                        showTimeSelect
-                        onChange={this.handleAgendaDateInput}
-                    />
+                    <Form.Label class="label" id="dateInputLabel">Agenda Date</Form.Label>
+                    <div>
+                        <DatePicker
+                            id="datePickerInput"
+                            wrapperClassName="datePickerWrapper"
+                            dateFormat="dd MMMM yyyy HH:mm"
+                            selected={this.state.datePickerDate}
+                            showTimeSelect
+                            onChange={this.handleAgendaDateInput}
+                        />
+                    </div>
                 </Form.Group>
 
                 <Button

@@ -1,0 +1,11 @@
+#dateInputLabel {
+    display: block;
+}
+
+#datePickerInput {
+    width: 100%;
+}
+
+.datePickerWrapper {
+    width: 100%;
+}
